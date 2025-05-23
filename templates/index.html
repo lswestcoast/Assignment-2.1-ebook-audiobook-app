@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>eBook & Audiobook Library</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 2em; background: #f5f5f5; }
+        h1 { color: #333; }
+        .book-card { margin-bottom: 1em; background: white; padding: 1em; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        button, a { margin-top: 0.5em; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Your AI-Generated eBook Library</h1>
+    {% for ebook in ebooks %}
+    <div class="book-card">
+        <h3>{{ ebook.replace('.txt', '').replace('_', ' ') }}</h3>
+        <form action="/generate_audio" method="post">
+            <input type="hidden" name="ebook" value="{{ ebook }}">
+            <button type="submit">Convert to Audiobook</button>
+        </form>
+        <a href="{{ url_for('download_file', filename=ebook) }}">📘 Download eBook</a>
+    </div>
+    {% endfor %}
+
+    {% if audio_file %}
+    <hr>
+    <h2>🎧 Audiobook Preview:</h2>
+    <audio controls>
+        <source src="{{ url_for('static', filename='audio/' + audio_file.split('/')[-1]) }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    {% endif %}
+</body>
+</html>
