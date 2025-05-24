@@ -47,4 +47,5 @@ if not os.listdir(EBOOK_FOLDER):
             f.write(content)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
+
