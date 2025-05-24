@@ -13,9 +13,3 @@ A web application that allows users to read, download, and (offline) listen to A
 - Flask
 - pyttsx3 (for offline TTS)
 - HTML/CSS
-
-## Getting Started (Local)
-```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
-run_app.bat  # on Windows
