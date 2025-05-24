@@ -8,7 +8,7 @@ This web application allows users to browse AI-generated short stories, download
 - Convert any story to an audiobook (MP3) using `pyttsx3`
 - Clean, simple UI with audio playback
 
-## 🛠Built With
+## Built With
 - Python (Flask)
 - pyttsx3 (Text-to-Speech)
 - HTML/CSS (for UI)
