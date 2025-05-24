@@ -1,9 +1,5 @@
-# app.py
-# This is the main server-side file using Flask to serve the web application
-
 from flask import Flask, render_template, request, send_file
 import os
-import pyttsx3
 
 app = Flask(__name__)
 
@@ -17,25 +13,13 @@ os.makedirs(AUDIO_FOLDER, exist_ok=True)
 
 @app.route('/')
 def index():
-    # List all available eBooks
     ebooks = [f for f in os.listdir(EBOOK_FOLDER) if f.endswith(".txt")]
     return render_template('index.html', ebooks=ebooks, audio_file=None)
 
-@app.route('/generate_audio', methods=['POST'])
-def generate_audio():
-    ebook_name = request.form['ebook']
-    ebook_path = os.path.join(EBOOK_FOLDER, ebook_name)
-    audio_path = os.path.join(AUDIO_FOLDER, ebook_name.replace(".txt", ".mp3"))
-
-    # Initialize text-to-speech engine
-    engine = pyttsx3.init()
-    engine.setProperty('rate', 150)
-    with open(ebook_path, 'r') as file:
-        text = file.read()
-    engine.save_to_file(text, audio_path)
-    engine.runAndWait()
-
-    return render_template('index.html', ebooks=os.listdir(EBOOK_FOLDER), audio_file=audio_path)
+# Audiobook feature disabled for hosted version
+# @app.route('/generate_audio', methods=['POST'])
+# def generate_audio():
+#     return "Audio generation is disabled in hosted version.", 501
 
 @app.route('/download/<filename>')
 def download_file(filename):
@@ -56,4 +40,3 @@ if not os.listdir(EBOOK_FOLDER):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
-
