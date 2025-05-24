@@ -1,8 +1,21 @@
 # AI eBook & Audiobook Web App
 
-This simple web app allows you to:
-- Read short eBooks
-- Download eBook files
-- Convert eBooks to audiobooks using text-to-speech (for local version only)
+A web application that allows users to read, download, and (offline) listen to AI-generated eBooks. Built with Python and Flask.
 
-Built using Python, Flask, and a few standard libraries. The local version supports MP3 generation using pyttsx3.
+## Features
+- 📚 Browse AI-generated short stories
+- 💾 Download eBooks (.txt format)
+- 🎧 Convert to MP3 audiobooks (local use only)
+- 🌐 Hosted version (Render) for demo purposes
+
+## Technologies
+- Python 3.13
+- Flask
+- pyttsx3 (for offline TTS)
+- HTML/CSS
+
+## Getting Started (Local)
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+cd YOUR_REPO_NAME
+run_app.bat  # on Windows
